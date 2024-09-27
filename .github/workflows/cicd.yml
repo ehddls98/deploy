@@ -25,9 +25,8 @@ jobs:
           chmod 700 ./mvnw
           ./mvnw clean package -Dtestskip
           
-      - name: Show directory
-        run: |
-          ls -a
-          cd ./target
-          ls -a
-
+      - name: Login DockerHub
+        uses: docker/login-action@v1
+        with: 
+          username: 
+          password: 
