@@ -22,11 +22,12 @@ jobs:
           
       - name: Build SpringBoot Server
         run: |
+          echo ${{ secrets.APPLICATION_SECRET }} | base64 --decode > ./src/main/resources/application-secret.yml
           chmod 700 ./mvnw
           ./mvnw clean package -Dtestskip
           
       - name: Login DockerHub
         uses: docker/login-action@v1
         with: 
-          username: 
-          password: 
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
